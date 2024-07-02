@@ -1,9 +1,62 @@
-import { SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
 import './App.scss';
+
+import 'swiper/scss';
+import 'swiper/scss/navigation';
 
 const App = () => {
   const points = 6; // количество точек
   const angleStep = 360 / points; // угол между точками
+  const events = [
+    {
+      year: 2015,
+      description:
+        '13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды',
+    },
+    {
+      year: 2016,
+      description:
+        'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11',
+    },
+    {
+      year: 2017,
+      description:
+        'Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi',
+    },
+    {
+      year: 2015,
+      description:
+        '13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды',
+    },
+    {
+      year: 2016,
+      description:
+        'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11',
+    },
+    {
+      year: 2017,
+      description:
+        'Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi',
+    },
+    {
+      year: 2015,
+      description:
+        '13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды',
+    },
+    {
+      year: 2016,
+      description:
+        'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11',
+    },
+    {
+      year: 2017,
+      description:
+        'Компания Tesla официально представила первый в мире электрический грузовик Tesla Semi',
+    },
+  ];
+
   return (
     <main className="main">
       <div className="timeline">
@@ -50,27 +103,30 @@ const App = () => {
         </div>
       </div>
 
-      <div className="swiper">
-        <div className="swiper-wrapper">
-          <SwiperSlide>
-            <div className="swiper-slide">Slide 1</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="swiper-slide">Slide 2</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="swiper-slide">Slide 3</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="swiper-slide">Slide 4</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="swiper-slide">Slide 5</div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="swiper-slide">Slide 6</div>
-          </SwiperSlide>
-        </div>
+      <div className="swiper-container">
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={50}
+          slidesPerView={3}
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+        >
+          {events.map((event, index) => (
+            <SwiperSlide key={index}>
+              <div className="event-card">
+                <h3 className="event-year">{event.year}</h3>
+                <p className="event-description">{event.description}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <button className="swiper-button-prev"></button>
+        <button className="swiper-button-next"></button>
       </div>
     </main>
   );
