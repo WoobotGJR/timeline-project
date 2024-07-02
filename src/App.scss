@@ -1,0 +1,238 @@
+@import './styles/constants.scss';
+
+.main {
+  max-width: 1440px;
+  min-width: 320px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+
+  border-left: 1px solid rgba($color: $main-color, $alpha: 0.1);
+  border-right: 1px solid rgba($color: $main-color, $alpha: 0.1);
+
+  font-family: 'PT Sans', 'Roboto', sans-serif; // safe fonts
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid rgba($color: $main-color, $alpha: 0.1);
+    top: 482px;
+    left: 0;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    border-left: 1px solid rgba($color: $main-color, $alpha: 0.1);
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    height: 100vh;
+    z-index: 0;
+  }
+}
+
+.timeline {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    margin: 0;
+    padding-top: 170px;
+    padding-left: 78px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 67.2px;
+    color: $main-color;
+    max-width: 353px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 120px;
+      background: linear-gradient($gradient-blue, $gradient-pink);
+      bottom: 10px;
+      left: -1px;
+    }
+  }
+
+  &__dates {
+    display: block;
+    margin: 0 auto;
+    padding-top: 95px;
+    width: 100%;
+    max-width: 973px;
+    font-weight: 700;
+    font-size: 200px;
+    line-height: 80%;
+    letter-spacing: -2%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.start-year {
+  color: $text-blue;
+}
+
+.end-year {
+  color: $text-pink;
+}
+
+.timeline__navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 170px;
+
+  position: absolute;
+  top: 215px;
+  left: calc(50% - 530px / 2);
+}
+
+.main-circle {
+  position: relative;
+  width: 530px;
+  height: 530px;
+  border-radius: 50%;
+  border: 1px solid rgba($color: $main-color, $alpha: 0.1);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__circle-item {
+    position: absolute;
+    width: 111%;
+    transform: rotate(calc(360deg / var(--count) * var(--index)));
+    visibility: hidden;
+  }
+
+  &__text-container {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(
+      calc(360deg / var(--count) * var(--index) - var(--correctingDeg))
+    );
+    visibility: visible;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+
+    &:hover .main-circle__text {
+      border: 1px solid rgba($color: #303e5880, $alpha: 0.2);
+      background-color: white;
+      scale: 1;
+    }
+  }
+
+  &__text {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 80%;
+    text-align: center;
+    color: $main-color;
+    scale: 0.2;
+    background-color: $main-color;
+    border-radius: 50%;
+    transition: all 300ms ease-in-out;
+  }
+}
+
+.swiper-navbar {
+  display: flex;
+  flex-direction: column;
+  padding: 137px 0 80px 56px;
+
+  &__text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: $main-color;
+  }
+
+  &__button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba($color: $main-color, $alpha: 0.1);
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.forward-button {
+  &::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 1px;
+    background-color: $main-color;
+    transform: translate(-6px, -4px) rotate(-45deg);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 1px;
+    background-color: $main-color;
+    transform: translate(-5px, 3px) rotate(45deg);
+  }
+}
+
+.backward-button {
+  &::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 1px;
+    background-color: $main-color;
+    transform: translate(-6px, -4px) rotate(-135deg);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 1px;
+    background-color: $main-color;
+    transform: translate(-5px, 3px) rotate(135deg);
+  }
+}
+
+.swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &-wrapper {
+  }
+
+  &-slide {
+    max-width: 320px;
+    min-height: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
