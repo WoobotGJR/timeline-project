@@ -5,6 +5,7 @@ import './App.scss';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
+import ArrowButton from './components/ui/ArrowButton/ArrowButton';
 
 const App = () => {
   const points = 6; // количество точек
@@ -98,8 +99,12 @@ const App = () => {
       <div className="swiper-navbar">
         <p className="swiper-navbar__text">06/06</p>
         <div className="swiper-navbar__buttons">
-          <button className="swiper-navbar__button forward-button"></button>
-          <button className="swiper-navbar__button backward-button"></button>
+          <button className="swiper-navbar__button">
+            <ArrowButton direction="left" />
+          </button>
+          <button className="swiper-navbar__button">
+            <ArrowButton direction="right" />
+          </button>
         </div>
       </div>
 
@@ -125,8 +130,12 @@ const App = () => {
           ))}
         </Swiper>
 
-        <button className="swiper-button-prev"></button>
-        <button className="swiper-button-next"></button>
+        <button className="swiper-button-prev">
+          <ArrowButton direction="left" />
+        </button>
+        <button className="swiper-button-next">
+          <ArrowButton direction="right" />
+        </button>
       </div>
     </main>
   );

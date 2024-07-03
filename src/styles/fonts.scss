@@ -3,7 +3,7 @@
   font-family: 'PT Sans';
   font-weight: 400;
   font-style: normal;
-  src: url('../../assets/fonts/PTSans-Regular.ttf') format('ttf');
+  src: url('@/assets/fonts/PTSans-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -11,13 +11,23 @@
   font-family: 'PT Sans';
   font-weight: 700;
   font-style: normal;
-  src: url('../../assets/fonts/PTSans-Bold.ttf') format('ttf');
+  src: url('@/assets/fonts/PTSans-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Bebas Neue';
+  font-family: 'BebasNeue';
   font-weight: 400;
   font-style: normal;
-  src: url('../../assets/fonts/BebasNeue-Regular.ttf') format('ttf');
+  src: url('@/assets/fonts/BebasNeue-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'BebasNeue', sans-serif;
 }
