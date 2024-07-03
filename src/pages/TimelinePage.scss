@@ -1,6 +1,7 @@
 @import '@/styles/constants.scss';
 @import '@/styles/fonts.scss';
 
+// Timeline page styles
 .main {
   max-width: 1440px;
   min-width: 320px;
@@ -50,6 +51,7 @@
   }
 }
 
+// Title and TimelineYears component styles
 .timeline {
   position: relative;
   overflow: hidden;
@@ -155,6 +157,7 @@
   color: $text-pink;
 }
 
+// TimeLineNavigation styles
 .timeline__navigation {
   display: flex;
   justify-content: center;
@@ -312,6 +315,7 @@
   }
 }
 
+// CustomSwiper component styles
 .swiper-container {
   position: relative;
   width: 100%;
