@@ -91,9 +91,11 @@ const TimelineNavigation: React.FC<TimelineNavigationProps> = ({
       </div>
 
       <div className="circles-navbar">
-        <p className="circles-navbar__text">{`${currentCategory + 1} / ${
-          renderData.length
-        }`}</p>
+        <p className="circles-navbar__text">{`${String(
+          currentCategory + 1
+        ).padStart(2, '0')} / ${renderData.length
+          .toString()
+          .padStart(2, '0')}`}</p>
         <div className="circles-navbar__buttons">
           <button
             className="circles-navbar__button"

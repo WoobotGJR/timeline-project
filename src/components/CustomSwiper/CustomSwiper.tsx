@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 
 import ArrowButton from '../ui/ArrowButton/ArrowButton';
 import { renderData } from '../../constants/renderData';
@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
 
 interface CustomSwiperProps {
   currentCategory: number;
@@ -28,14 +29,23 @@ const CustomSwiper: React.FC<CustomSwiperProps> = ({ currentCategory }) => {
   return (
     <div className="swiper-container">
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Pagination]}
         slidesPerView={3}
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
           disabledClass: 'swiper-button-disabled',
         }}
-        pagination={{ clickable: true }}
+        spaceBetween={10}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 3,
+          },
+        }}
+        pagination={{ clickable: true, el: '.swiper-pagination' }}
         scrollbar={{ draggable: true }}
       >
         {renderData[currentCategory].details
@@ -52,6 +62,8 @@ const CustomSwiper: React.FC<CustomSwiperProps> = ({ currentCategory }) => {
             </SwiperSlide>
           ))}
       </Swiper>
+
+      <div className="swiper-pagination"></div>
 
       <button className="swiper-button-prev">
         <ArrowButton direction="left" />
