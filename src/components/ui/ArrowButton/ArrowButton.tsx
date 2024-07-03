@@ -23,7 +23,7 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({ direction }) => {
       >
         <path
           d="M8.49988 0.750001L2.24988 7L8.49988 13.25"
-          stroke="#42567A"
+          stroke="currentColor"
           strokeWidth="2"
         />
       </svg>

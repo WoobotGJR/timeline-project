@@ -197,6 +197,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 400px;
 }
 
 .event-year {
@@ -208,8 +209,9 @@
 }
 
 .event-description {
-  font-size: 1rem;
-  color: #333;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 .swiper-button-prev,
@@ -219,6 +221,8 @@
   border-radius: 50%;
   cursor: pointer;
   border: 1px solid rgba($color: $main-color, $alpha: 0.1);
+  color: $text-blue !important;
+  top: 50% !important;
 
   &::after {
     content: '' !important;
@@ -226,4 +230,12 @@
   &::before {
     content: '' !important;
   }
+}
+
+.swiper-button-prev {
+  left: -7% !important;
+}
+
+.swiper-button-next {
+  right: -7% !important;
 }

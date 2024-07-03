@@ -111,7 +111,6 @@ const App = () => {
       <div className="swiper-container">
         <Swiper
           modules={[Navigation]}
-          spaceBetween={50}
           slidesPerView={3}
           navigation={{
             nextEl: '.swiper-button-next',
