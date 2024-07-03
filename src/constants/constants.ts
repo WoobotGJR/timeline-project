@@ -1,0 +1,5 @@
+const MAX_SLIDES = 6;
+
+const STARTER_CATEGORY = 2;
+
+export { MAX_SLIDES, STARTER_CATEGORY };

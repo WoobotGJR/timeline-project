@@ -18,7 +18,7 @@
     border-top: 1px solid rgba($color: $main-color, $alpha: 0.1);
     top: 482px;
     left: 0;
-    z-index: 0;
+    z-index: 1;
   }
 
   &::after {
@@ -27,8 +27,8 @@
     position: absolute;
     top: 0px;
     left: 50%;
-    height: 100vh;
-    z-index: 0;
+    height: 100%;
+    z-index: 1;
   }
 }
 
@@ -109,8 +109,24 @@
   &__circle-item {
     position: absolute;
     width: 111%;
-    transform: rotate(calc(360deg / var(--count) * var(--index)));
+    transform: rotate(
+      calc(360deg / var(--count) * var(--index) + var(--switchAngle))
+    );
     visibility: hidden;
+    transition: all 500ms ease-in-out;
+
+    &_active {
+      & .main-circle__text {
+        background-color: white;
+        border: 1px solid rgba($color: #303e5880, $alpha: 0.2);
+        scale: 1;
+      }
+
+      & .main-circle__span-text {
+        visibility: visible;
+        pointer-events: none;
+      }
+    }
   }
 
   &__text-container {
@@ -121,10 +137,13 @@
     justify-content: center;
     align-items: center;
     transform: rotate(
-      calc(360deg / var(--count) * var(--index) - var(--correctingDeg))
+      calc(
+        360deg / var(--count) * var(--index) - var(--correctingDeg) -
+          var(--switchAngle)
+      )
     );
     visibility: visible;
-    transition: all 300ms ease-in-out;
+    transition: all 500ms ease-in-out;
     cursor: pointer;
 
     &:hover .main-circle__text {
@@ -148,7 +167,21 @@
     scale: 0.2;
     background-color: $main-color;
     border-radius: 50%;
-    transition: all 300ms ease-in-out;
+    transition: all 500ms ease-in-out;
+  }
+
+  &__span-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: $main-color;
+    visibility: hidden;
+    position: absolute;
+    left: 70px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    transition: all 500ms ease-in-out;
   }
 }
 
@@ -162,6 +195,7 @@
     font-size: 14px;
     line-height: 150%;
     color: $main-color;
+    padding-bottom: 20px;
   }
 
   &__button {
@@ -170,12 +204,13 @@
     border-radius: 50%;
     cursor: pointer;
     border: 1px solid rgba($color: $main-color, $alpha: 0.1);
+    padding-top: 4px;
   }
 
   &__buttons {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
   }
 }
 
@@ -185,12 +220,23 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 0;
+  z-index: 0;
 }
 
 .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+}
+
+.swiper-slide.visible {
+  transition: opacity 100ms ease-in-out;
+  opacity: 1;
+}
+
+.swiper-slide.hidden {
+  opacity: 0;
 }
 
 .event-card {
@@ -216,8 +262,8 @@
 
 .swiper-button-prev,
 .swiper-button-next {
-  width: 50px !important; // fix for swiper
-  height: 50px !important;
+  width: 40px !important; // fix for swiper
+  height: 40px !important;
   border-radius: 50%;
   cursor: pointer;
   border: 1px solid rgba($color: $main-color, $alpha: 0.1);
@@ -234,8 +280,14 @@
 
 .swiper-button-prev {
   left: -7% !important;
+  padding: 4px 2px 0 0;
 }
 
 .swiper-button-next {
   right: -7% !important;
+  padding: 4px 0 0 2px;
+}
+
+.swiper-button-disabled {
+  visibility: hidden;
 }

@@ -3,7 +3,7 @@ interface ArrowButtonProps {
 }
 
 const ArrowButton: React.FC<ArrowButtonProps> = ({ direction }) => {
-  const rotateAngle = {
+  const rotationAngle = {
     left: 0,
     right: 180,
     up: 90,
@@ -19,7 +19,9 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({ direction }) => {
         viewBox="0 0 10 14"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ transform: `rotate(${rotateAngle[direction]}deg)` }}
+        style={{
+          transform: `rotate(${rotationAngle[direction]}deg)`,
+        }}
       >
         <path
           d="M8.49988 0.750001L2.24988 7L8.49988 13.25"
