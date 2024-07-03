@@ -1,5 +1,5 @@
-@import './styles/constants.scss';
-@import './styles/fonts.scss';
+@import '../styles/constants.scss';
+@import '../styles/fonts.scss';
 
 .main {
   max-width: 1440px;
@@ -68,7 +68,7 @@
     font-weight: 700;
     font-size: 200px;
     line-height: 80%;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -185,7 +185,7 @@
   }
 }
 
-.swiper-navbar {
+.circles-navbar {
   display: flex;
   flex-direction: column;
   padding: 137px 0 80px 56px;
