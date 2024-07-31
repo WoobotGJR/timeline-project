@@ -4,7 +4,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import ArrowButton from '../ui/ArrowButton/ArrowButton';
 import { renderData } from '../../constants/renderData';
 import { MAX_SLIDES } from '../../constants/constants';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -18,7 +18,7 @@ const CustomSwiper: React.FC<CustomSwiperProps> = ({ currentCategory }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   // Delay for animation of swiper cards appearing
-  useEffect(() => {
+  useLayoutEffect(() => {
     setIsVisible(false);
     const timer = setTimeout(() => {
       setIsVisible(true);

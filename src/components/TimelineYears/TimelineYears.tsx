@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { renderData } from '../../constants/renderData';
 import gsap from 'gsap';
 
@@ -25,7 +25,7 @@ const TimelineYears: React.FC<TimelineYearsProps> = ({ currentCategory }) => {
   }, []);
 
   // Animation of year changing upon category change
-  useEffect(() => {
+  useLayoutEffect(() => {
     animateYearChange(
       startYearRef.current ?? new HTMLSpanElement(),
       Number(prevStartYear),
